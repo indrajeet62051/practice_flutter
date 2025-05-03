@@ -86,7 +86,10 @@ class SecondPage extends StatelessWidget {
           SizedBox(width: 20),
           ElevatedButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => usr_input()));
-          }, child: Text("redirect to extra page"))
+          }, child: Text("redirect to extra page")),
+          ElevatedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Extrapage()));
+          }, child: Text("extra page redirect"))
 
         ],
       )),
