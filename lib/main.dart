@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'setState_example.dart';
 import 'async_await_future.dart';
+import 'extra.dart';
 void main(){
   runApp(myApp());
 }
@@ -80,7 +81,11 @@ class SecondPage extends StatelessWidget {
               );
             },
             child: Text("Try SetState"),
-          )
+          ),
+          SizedBox(width: 20),
+          ElevatedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => usr_input()));
+          }, child: Text("redirect to extra page"))
 
         ],
       )),
