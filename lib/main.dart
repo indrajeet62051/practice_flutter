@@ -56,6 +56,8 @@ class main_page extends StatelessWidget{
 
 
 class SecondPage extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,8 +70,18 @@ class SecondPage extends StatelessWidget {
           }, child: Text("redirected to another page")),
           SizedBox(height: 16),
           SizedBox(width: 20),
-          ElevatedButton(onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context) => setStateexample()));
-          },child: Text("try SetState"),)
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => setStateexample(message: "Hello from the first screen"),
+                ),
+              );
+            },
+            child: Text("Try SetState"),
+          )
+
         ],
       )),
     );

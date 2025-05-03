@@ -2,18 +2,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main(){
-  runApp(setStateexample());
+  runApp(setStateexample(message: '',));
 }
 
 class setStateexample extends StatelessWidget{
+  final String message;
+  setStateexample({required this.message});
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-      home: MainScreen(),
+      home: MainScreen(message : message),
     );
   }
 }
 class MainScreen extends StatefulWidget{
+  final String message;
+  MainScreen({required this.message});
   @override
   State<MainScreen> createState() => CounterScreen() ;
 }
@@ -85,6 +89,8 @@ class CounterScreen extends State<MainScreen>{
             onPressed: reset,
             child: Icon(Icons.lock_reset),
           ),
+          SizedBox(width: 20,),
+          Text(widget.message),
         ],
       ),
 
