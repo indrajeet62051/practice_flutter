@@ -19,40 +19,69 @@ class screen extends StatefulWidget{
   State<screen> createState() => userInput() ;
   }
 
-class userInput extends State<screen>{
- TextEditingController  myController = TextEditingController();
- void InputHandle(){
+class userInput extends State<screen> {
+  TextEditingController myController = TextEditingController();
 
- }
-
-
+  void InputHandle() {
+    // You can handle input logic here if needed
+  }
 
   @override
   Widget build(BuildContext context) {
-   return   Scaffold(
-     appBar: AppBar(
-       title: Text("User Input " ,),
-       backgroundColor: Colors.blue,
-     ),
-     body: Row(
-       children: [
-         Text("Enter the nuber "),
-         SizedBox(width: 30,),
-         TextField(
-           controller: myController,
-           keyboardType: TextInputType.number,
-         )
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("User Input"),
+        backgroundColor: Colors.blue,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0), // Add padding for spacing
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start
+          children: [
+            Text("Enter the number (Max 300):"),
+            SizedBox(height: 20), // Add space between Text and TextField
+            TextField(
+              controller: myController,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                hintText: "Enter a number",
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20), // Space between TextField and button
+            ElevatedButton(
+              onPressed: () {
+                // Try parsing the input value
+                int myvalue = int.tryParse(myController.text) ?? 0;
 
-       ],
-     ),
-     floatingActionButton: FloatingActionButton(onPressed: (){
-       int myvalue = int.tryParse(myController.text) ?? 0;
-       Navigator.push(context, MaterialPageRoute(builder: (context) => listView( message : myvalue)));
-     }, child: Text("Redirect to ListView Example"),),
-   );
+                // Restrict the value to a maximum of 300
+                if (myvalue > 300) {
+                  myvalue = 300; // Set the value to 300 if it exceeds it
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text("Value exceeds 300, setting to 300."),
+                      duration: Duration(seconds: 2),
+                    ),
+                  );
+                }
+
+                // Navigate to the next screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => listView(message: myvalue),
+                  ),
+                );
+              },
+              child: Text("Redirect to ListView Example"),
+            ),
+          ],
+        ),
+      ),
+    );
   }
-
 }
+
 
 
 
