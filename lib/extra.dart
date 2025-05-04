@@ -35,10 +35,15 @@ class extra extends StatelessWidget{
                       title: Text("Alert Dialogbox"),
                       content: Text("it's a example of alert dialogbox "),
                       actions: [TextButton(onPressed: (){
-                        Navigator.pop(context)  ;
-                      }, child: Column(children: [
-                        Text("ok"),
-                      ],))],
+                        Navigator.pop(context);
+                        print("ok clicked")
+                        ;
+                      }, child: Text("ok")),
+                      TextButton(onPressed: (){
+                        Navigator.pop(context);
+                        print("Cancel clicked");
+                      }, child: Text("Cancle"))
+                      ],
                     );
 
                   });

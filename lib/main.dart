@@ -41,6 +41,7 @@ class main_page extends StatelessWidget{
                 color: Colors.red,
                 child: Center(child: Text("Data will be shown here :- ")),
               ),
+              SizedBox(height: 20,),
               ElevatedButton(onPressed:(){
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SecondPage()));
@@ -83,10 +84,11 @@ class SecondPage extends StatelessWidget {
             },
             child: Text("Try SetState"),
           ),
-          SizedBox(width: 20),
+          SizedBox(height: 20),
           ElevatedButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => usr_input()));
           }, child: Text("redirect to extra page")),
+          SizedBox(height: 20,),
           ElevatedButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => Extrapage()));
           }, child: Text("extra page redirect"))
