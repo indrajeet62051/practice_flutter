@@ -112,7 +112,7 @@ class SecondPage extends StatelessWidget {
             });
           }, child: Text("redirect to shoeDialog example")),
           SizedBox(height: 20,),
-          FloatingActionButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => practice()));})
+          TextButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => practice()));},child: Text("practice Api"),)
 
         ],
       )),
