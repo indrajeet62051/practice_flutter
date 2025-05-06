@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:practice_flutter/API_practice.dart';
 import 'setState_example.dart';
 import 'async_await_future.dart';
 import 'ListView_With_useInput.dart';
@@ -109,7 +110,9 @@ class SecondPage extends StatelessWidget {
                 ],
               ) ;
             });
-          }, child: Text("redirect to shoeDialog example"))
+          }, child: Text("redirect to shoeDialog example")),
+          SizedBox(height: 20,),
+          FloatingActionButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => practice()));})
 
         ],
       )),
