@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'setState_example.dart';
 import 'async_await_future.dart';
 import 'ListView_With_useInput.dart';
+import 'showDialog.dart';
 import 'extra.dart';
 void main(){
   runApp(myApp());
@@ -91,7 +92,24 @@ class SecondPage extends StatelessWidget {
           SizedBox(height: 20,),
           ElevatedButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => Extrapage()));
-          }, child: Text("extra page redirect"))
+          }, child: Text("extra page redirect")),
+          SizedBox(height: 20,),
+          ElevatedButton(onPressed: (){
+            showDialog(context: context, builder: (context){
+              return AlertDialog(
+                title: Text("Navigator"),
+                content: Text("Are you sure want to redirect to showDialog Example page "),
+                actions: [TextButton(onPressed: (){
+                  Navigator.pop(context);
+                }, child: Text("Cancle")),
+                          TextButton(onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => SHOWdialog()));
+                          }, child: Text("Yes"))
+                ],
+              ) ;
+            });
+          }, child: Text("redirect to shoeDialog example"))
 
         ],
       )),
