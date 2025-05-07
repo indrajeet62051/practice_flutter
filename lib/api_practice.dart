@@ -3,43 +3,44 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
-  runApp(const Practice());
+  runApp(practice());
 }
 
-class Practice extends StatelessWidget {
-  const Practice({super.key});
-
+class practice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Practicing API Integration",
       debugShowCheckedModeBanner: false,
-      home: const MainScreen(),
+      home: mainScreen(),
     );
   }
 }
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
-
+class mainScreen extends StatefulWidget {
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<mainScreen> createState() => _mainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _mainScreenState extends State<mainScreen> {
+  List<dynamic> data = [];
+
   @override
   void initState() {
     super.initState();
-    fetchData(); // ✅ Proper place to call API
+    fatchData(); //Call the API when screen loads
   }
 
-  Future<void> fetchData() async {
+  Future<void> fatchData() async {
     final url = Uri.parse('https://jsonplaceholder.typicode.com/posts');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      print(data); // ✅ Should now appear in your debug console
+      setState(() {
+        data = jsonDecode(response.body);
+      });
+
+      print(data);
     } else {
       print("Unable to load data");
     }
@@ -49,11 +50,20 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("API Integration Practice"),
-        backgroundColor: Colors.red,
+        title: Text("API Integration Practice"),
+        backgroundColor: Colors.red.shade600,
       ),
-      body: const Center(
-        child: Text("Check console for output"),
+      body: data.isEmpty
+          ? const Center(child: CircularProgressIndicator())
+          : ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, index) {
+          final item = data[index];
+          return ListTile(
+            title: Text(item['title']),
+            subtitle: Text(item['body']),
+          );
+        },
       ),
     );
   }

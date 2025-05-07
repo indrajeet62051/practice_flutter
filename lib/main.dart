@@ -89,7 +89,7 @@ class SecondPage extends StatelessWidget {
           SizedBox(height: 20),
           ElevatedButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => usr_input()));
-          }, child: Text("redirect to extra page")),
+          }, child: Text("redirect to ListView example")),
           SizedBox(height: 20,),
           ElevatedButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => Extrapage()));
@@ -112,7 +112,7 @@ class SecondPage extends StatelessWidget {
             });
           }, child: Text("redirect to shoeDialog example")),
           SizedBox(height: 20,),
-          TextButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Practice()));},child: Text("practice Api"),)
+          TextButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => practice()));},child: Text("practice Api"),)
 
         ],
       )),
