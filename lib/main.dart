@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:practice_flutter/API_practice.dart';
+import 'package:practice_flutter/api_practice.dart';
 import 'setState_example.dart';
 import 'async_await_future.dart';
 import 'ListView_With_useInput.dart';
@@ -112,7 +112,7 @@ class SecondPage extends StatelessWidget {
             });
           }, child: Text("redirect to shoeDialog example")),
           SizedBox(height: 20,),
-          TextButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => practice()));},child: Text("practice Api"),)
+          TextButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Practice()));},child: Text("practice Api"),)
 
         ],
       )),
